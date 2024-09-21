@@ -1,4 +1,4 @@
-{% set version = '0.17-6' %}
+{% set version = "0.17-7" %}
 {% set posix = 'm2-' if win else '' %}
 
 package:
@@ -9,10 +9,10 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/analogue_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/analogue/analogue_{{ version }}.tar.gz
-  sha256: 71070f4e669b161a8bec355bf678cc94bb78ba87ee0625cbd8cd53b7ac45b030
+  sha256: f08bdd02968ea22d3fcf87b1d432f012c17d90e80af9672adb810e40bd151851
 
 build:
-  number: 2
+  number: 0
   rpaths:
     - lib/R/lib/
     - lib/
@@ -54,9 +54,7 @@ test:
 about:
   home: https://github.com/gavinsimpson/analogue
   license: GPL-2.0-only
-  summary: Fits Modern Analogue Technique and Weighted Averaging transfer function models for
-    prediction of environmental data from species data, and related methods used in
-    palaeoecology.
+  summary: Fits Modern Analogue Technique and Weighted Averaging transfer function models for prediction of environmental data from species data, and related methods used in palaeoecology.
   license_family: GPL2
   license_file:
     - '{{ environ["PREFIX"] }}/lib/R/share/licenses/GPL-2'
