@@ -1,4 +1,4 @@
-{% set version = "0.17-7" %}
+{% set version = "0.18.1" %}
 {% set posix = 'm2-' if win else '' %}
 
 package:
@@ -9,7 +9,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/analogue_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/analogue/analogue_{{ version }}.tar.gz
-  sha256: f08bdd02968ea22d3fcf87b1d432f012c17d90e80af9672adb810e40bd151851
+  sha256: 95c20a92d6a7ea1d2bc1163e5c7c973517db230b687556851475690a6a5a975b
 
 build:
   number: 0
