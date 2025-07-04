@@ -29,6 +29,10 @@ requirements:
     - {{ posix }}coreutils         # [win]
     - {{ posix }}zip               # [win]
     - cross-r-base {{ r_base }}    # [build_platform != target_platform]
+    # The libstdc++.dll provided in libstdcxx v15.1.0 build h904f734_2
+    # is missing `_ZSt21ios_base_library_initv`.
+    # see: conda-forge/ctng-compilers-feedstock#174
+    - libstdcxx !=14.3.0,!=15.1.0  # [win]
   host:
     - r-base
     - r-mass
@@ -45,6 +49,8 @@ requirements:
     - r-mgcv
     - r-princurve >=2.0.2
     - r-vegan >=2.2_0
+  run_constrained:
+    - libstdcxx !=14.3.0,!=15.1.0           # [win]
 
 test:
   commands:
