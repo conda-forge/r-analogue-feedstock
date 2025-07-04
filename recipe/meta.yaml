@@ -1,4 +1,4 @@
-{% set version = "0.17-7" %}
+{% set version = "0.18.1" %}
 {% set posix = 'm2-' if win else '' %}
 
 package:
@@ -9,7 +9,7 @@ source:
   url:
     - {{ cran_mirror }}/src/contrib/analogue_{{ version }}.tar.gz
     - {{ cran_mirror }}/src/contrib/Archive/analogue/analogue_{{ version }}.tar.gz
-  sha256: f08bdd02968ea22d3fcf87b1d432f012c17d90e80af9672adb810e40bd151851
+  sha256: 95c20a92d6a7ea1d2bc1163e5c7c973517db230b687556851475690a6a5a975b
 
 build:
   number: 0
@@ -29,6 +29,10 @@ requirements:
     - {{ posix }}coreutils         # [win]
     - {{ posix }}zip               # [win]
     - cross-r-base {{ r_base }}    # [build_platform != target_platform]
+    # The libstdc++.dll provided in libstdcxx v15.1.0 build h904f734_2
+    # is missing `_ZSt21ios_base_library_initv`.
+    # see: conda-forge/ctng-compilers-feedstock#174
+    - libstdcxx !=14.3.0,!=15.1.0  # [win]
   host:
     - r-base
     - r-mass
@@ -45,6 +49,8 @@ requirements:
     - r-mgcv
     - r-princurve >=2.0.2
     - r-vegan >=2.2_0
+  run_constrained:
+    - libstdcxx !=14.3.0,!=15.1.0           # [win]
 
 test:
   commands:
